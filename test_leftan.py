@@ -10,16 +10,17 @@
 ###############################################################################
 # Write f01 that prints "Hello World!" and calls f02. (three lines)
 def f01():
-
+    print("Hello World!")
     f02()
 
 
 ###############################################################################
 # Write f02 that sets the variables x, y, and z equal to the words
 # necessary to have the f03 print "i love python!" (five lines)
-
-
-
+def f02():
+    x = "i"
+    y = "love"
+    z = "python"
 
     f03(x, y, z)  # Last line in f2()
 
@@ -27,7 +28,7 @@ def f01():
 ###############################################################################
 # Finish f03 (replace the ????).
 def f03(*words):
-    truth = " ".????(words)  # This is broken.
+    truth = " ".join(words)  # This is broken.
     truth_emphasized = truth + "!"
     print(truth_emphasized)
     f04(truth)  # Last line in f03()
@@ -37,7 +38,7 @@ def f03(*words):
 # Write f04 that prints truth backwards (edit one line only)
 # Ex. f4("Littlest Bear") prints "raeB tselttiL"
 def f04(string):
-
+    print(string[::-1])
     f05(string)  # Last line in f04()
 
 
@@ -51,11 +52,10 @@ def f04(string):
 #   Info
 #    Info
 def f05(word):
-
-
-
-
-
+    n = 0
+    while n < len(word):
+        print(" " * n + word)
+        n += 1
     f06("South Hall", "Python Rocks!")  # Last line in f05()
 
 
@@ -71,11 +71,24 @@ def f05(word):
 # 'longer_string' is longer than 'short_string' by 1 chars
 # 'short_string' has only 92.31% the number of chars of longer_string
 def f06(string1, string2):
-
-
-
-
-
+    len_string1 = len(string1)
+    len_string2 = len(string2)
+    dif_of_len = len_string1 - len_string2
+    longer = None
+    shorter = None
+    if dif_of_len == 0:
+        print("Two strings have equal lengths.")
+    else:
+        if dif_of_len > 0:
+            longer = string1
+            shorter = string2
+        else:
+            longer = string2
+            shorter = string1
+            dif_of_len = 0 - dif_of_len
+        percentage = round((len(shorter) / len(longer)) * 100, 2)
+        print("{} is longer than {} by {} chars".format(longer, shorter, dif_of_len))
+        print("{} has only {}% the number of chars of {}".format(shorter, percentage, longer))
 
 
     various_solutions()  # Last line in f06()
@@ -113,18 +126,28 @@ def various_solutions():
 
 ###############################################################################
 def f07():
-    ...
-
+    num = 1
+    total = 0
+    while num < 500:
+        if num % 3 == 0 or num % 5 == 0:
+            total += num
+        num += 1
+    return total
 
 ###############################################################################
 def f08():
-    ...
+    total = 0
+    for i in range(1, 500):
+        if i % 3 == 0 or i % 5 == 0:
+            total += i
+    return total
 
 
 ###############################################################################
 def f09():
-    ...
-
+    total = 0
+    total = [i for i in range(1, 500) if i % 3 == 0 or i % 5 == 0]
+    return sum(total)
 
 ###############################################################################
 def f10():
@@ -164,7 +187,7 @@ def f12():
 ###############################################################################
 # Fix the error in f13:
 def f13():
-    for each in "string"
+    for each in "string":
         print(each)
     f14()  # Last line in f13()
 
@@ -333,4 +356,5 @@ def main():
 
 # Write the boilerplate code. (two lines, plus empty line at end)
 
-
+if __name__ == "__main__":
+    main()
